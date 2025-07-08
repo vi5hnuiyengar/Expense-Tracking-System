@@ -1,0 +1,11 @@
+2025-06-18 14:42:40,002 - my_logger - INFO - 
+2025-06-18 14:42:43,579 - my_logger - INFO - 
+2025-06-18 14:43:05,951 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:43:09,056 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:43:19,063 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:43:19,525 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:43:22,650 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:43:54,538 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:43:58,713 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:44:49,716 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
+2025-06-18 14:44:53,071 - my_logger - INFO - fetch_expenses_for_date called with 2024-08-15
