@@ -3,6 +3,7 @@ from add_update import add_update_tab
 from analytics_by_category import analytics_by_category_tab
 from analytics_by_month import analytics_by_month_tab
 from savings_plan import savings_plan_tab
+from artha_insights import artha_insights_tab
 
 st.title("Expense Tracking System")
 # st.markdown(
@@ -49,8 +50,8 @@ st.title("Expense Tracking System")
 #     """,
 #     unsafe_allow_html=True,
 # )
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["Add/Update", "Analytics by Category", "Analytics by Month", "Savings Plan"]
+tab1, tab2, tab3, tab4, tab5 = st.tabs(
+    ["Add/Update", "Analytics by Category", "Analytics by Month", "Savings Plan", "Artha Insights"]
 )
 
 with tab1:
@@ -61,6 +62,8 @@ with tab3:
     analytics_by_month_tab()
 with tab4:
     savings_plan_tab()
+with tab5:
+    artha_insights_tab()
 
 
 

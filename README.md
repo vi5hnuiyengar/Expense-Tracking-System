@@ -1,62 +1,112 @@
-# Expense Management System
+# Expense Tracking System
 
-This project is an expense management system that consists of a Steamlit frontend application and a FastAPI backend server.
+> Personal finance management with a twist of ancient wisdom
 
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+
+A lightweight expense management system combining a **Streamlit** frontend with a **FastAPI** backend. Track daily expenses, visualize spending patterns, generate savings plans, and receive financial insights paired with **Sanskrit wisdom** from texts like the Arthaśāstra.
+
+<p align="center">
+  <img src="screenshot1.png" alt="App Screenshot" width="700"/>
+</p>
+
+---
+
+## Features
+
+| Tab | Description |
+|-----|-------------|
+| **Add/Update** | Log daily expenses by category with notes |
+| **Analytics by Category** | Pie charts and breakdowns of spending categories |
+| **Analytics by Month** | Track spending trends over time |
+| **Savings Plan** | Generate personalized savings targets based on discretionary spending |
+| **Artha Insights** | *NEW* — Financial health score + Sanskrit wisdom on wealth |
+
+---
+
+## Artha Insights — What Makes This Unique
+
+<p align="center">
+  <img src="artha_insights.png" alt="Artha Insights" width="600"/>
+</p>
+
+*Artha* (अर्थ) is one of the four Puruṣārthas—the aims of human life in Hindu philosophy, representing prosperity and economic security pursued ethically.
+
+### Lakshmi Score
+
+A financial health metric (0-100) named after the goddess of wealth. The score evaluates:
+
+- **Essential vs. discretionary** spending ratio
+- **Diversification** across categories
+- **Spending concentration** (penalizes over-reliance on one category)
+
+| Score | Grade | Meaning |
+|-------|-------|---------|
+| 85-100 | Kuber | Excellent discipline (named after the god of wealth) |
+| 70-84 | Śreṣṭha | Strong financial health |
+| 55-69 | Madhyama | Moderate, room for optimization |
+| 40-54 | Sādhāraṇa | Needs attention |
+| 0-39 | Cintanīya | Requires immediate focus |
+
+### Sanskrit Wisdom
+
+Curated shlokas from classical texts on wealth management:
+
+> **अल्पानामपि वस्तूनां संहतिः कार्यसाधिका**
+> *alpānāmapi vastūnāṃ saṃhatiḥ kāryasādhikā*
+> "Even small things, when accumulated, accomplish great tasks."
+> — Cāṇakya Nīti 15.14
+
+The system selects contextually relevant wisdom based on your spending patterns—encouraging savings when you're doing well, offering gentle guidance when overspending.
+
+---
+
+## Tech Stack
+
+- **Frontend**: Streamlit
+- **Backend**: FastAPI
+- **Database**: MySQL
+- **Architecture**: REST API with Pydantic models
+
+---
 
 ## Project Structure
 
-- **frontend/**: Contains the Streamlit application code.
-- **backend/**: Contains the FastAPI backend server code.
-- **tests/**: Contains the test cases for both frontend and backend
-- **requirements.txt/**: Lists the required Python packages.
-- **README.md**/ Provides an overview and instructions for the project.
-
-
-## Setup Instructions
-
-1. **Clone the repository**:
-   ```bash
-    git clone https://github.com/yourusername/expense-management-system
-   cd expense-management-system
-   ```
-2. **Install dependencies**:
-    ```commandline
-   pip install -r requirements.txt
-    ``` 
-3. **Run the FastAPI server**:
-
-    ```commandline
-    uvicorn server.server:app --reload
-    ```
-4. **Run the Streamlit app**:
-
-    ```commandline
-    streamlit run frontend/app.py
-    ```
-
-
-A lightweight **FastAPI + Streamlit** app for logging daily expenses, viewing
-analytics, **and now generating a personalised savings plan** (v 1.1).
-
-![screenshot](screenshot1.png)
+```
+expense-tracking-system/
+├── frontend/
+│   ├── app.py                    # Main Streamlit app
+│   ├── add_update.py             # Expense entry tab
+│   ├── analytics_by_category.py  # Category analytics
+│   ├── analytics_by_month.py     # Monthly trends
+│   ├── savings_plan.py           # Savings calculator
+│   └── artha_insights.py         # Lakshmi Score + Sanskrit wisdom
+├── backend/
+│   ├── server.py                 # FastAPI endpoints
+│   ├── db_helper.py              # MySQL queries
+│   └── logging_setup.py          # Logging configuration
+├── test/                         # Pytest test suite
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## ✨ What’s new in 1.1
-| Feature | Notes                                                                                                                                                      |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Savings Plan tab** | Enter a target (e.g. “save \$1 000”), date range and frequency. The app analyses discretionary spend and tells you exactly how much to cut each week/month. |
-| **Dark-mode facelift** | Simple sans font, buttons/headings, dark-mode.                                                                                                   |
-| **Mandatory-expense filter** | Rent, mortgage, utilities, insurance and taxes are never suggested as cut-back categories.                                                                 |
+## Installation
 
----
+### Prerequisites
 
-## Prerequisites
-* Python 3.9+ (tested on 3.10)
-* MySQL server with a database called `expense_manager`
-* A table `expenses`:
+- Python 3.10+
+- MySQL server with a database called `expense_manager`
+
+### Database Setup
 
 ```sql
+CREATE DATABASE expense_manager;
+USE expense_manager;
+
 CREATE TABLE expenses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     expense_date DATE NOT NULL,
@@ -65,56 +115,90 @@ CREATE TABLE expenses (
     notes TEXT
 );
 ```
-# Setup
 
- 1. **clone + install**
- ```
-git clone https://github.com/your-handle/project_expense_tracking.git
-cd project_expense_tracking
-python -m venv .venv && source .venv/bin/activate
+### Run the App
+
+```bash
+# Clone the repository
+git clone https://github.com/vi5hnuiyengar/Expense-Tracking-System.git
+cd Expense-Tracking-System
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
-2. **configure DB creds (edit backend/db_helper.py or use env vars)**
-3. **run**
-```
-uvicorn backend.server:app --reload     # terminal 1
-streamlit run frontend/app.py           # terminal 2
-```
 
-## API Quick Reference
+# Configure database credentials in backend/db_helper.py
 
-| Method | Route                    | Description                              |
-|--------|--------------------------|------------------------------------------|
-| GET    | `/expenses/{date}`       | Return all expense rows for the date     |
-| POST   | `/expenses`              | Insert a new expense record              |
-| GET    | `/analytics`             | Category-level totals                    |
-| GET    | `/analytics/monthly`     | Month-by-month totals                    |
-| POST   | `/savings_plan` (NEW)    | Suggest weekly / monthly cut-backs to hit a target |
+# Start backend (terminal 1)
+uvicorn backend.server:app --reload
+
+# Start frontend (terminal 2)
+streamlit run frontend/app.py
+```
 
 ---
 
-### Example — generate a savings plan
+## API Reference
 
-```http
-POST /savings_plan HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/expenses/{date}` | Get all expenses for a date |
+| `POST` | `/expenses/{date}` | Add/update expenses for a date |
+| `POST` | `/analytics` | Get category breakdown for date range |
+| `GET` | `/analytics/monthly` | Get month-by-month totals |
+| `POST` | `/savings_plan` | Generate savings recommendations |
 
-{
-  "target": 500,
-  "start_date": "2024-05-01",
-  "end_date":   "2024-09-06",
-  "period":     "week"
-}
+### Example: Savings Plan Request
+
+```bash
+curl -X POST http://localhost:8000/savings_plan \
+  -H "Content-Type: application/json" \
+  -d '{
+    "target": 500,
+    "start_date": "2024-01-01",
+    "end_date": "2024-03-31",
+    "period": "month"
+  }'
 ```
 
+---
+
+## Screenshots
+
+<table>
+<tr>
+<td><img src="add_update.png" alt="Add/Update" width="100%"/><br/><sub>Add/Update Expenses</sub></td>
+<td><img src="analytics_by_category.png" alt="Analytics" width="100%"/><br/><sub>Category Analytics</sub></td>
+</tr>
+<tr>
+<td><img src="analytics_by_month.png" alt="Monthly" width="100%"/><br/><sub>Monthly Trends</sub></td>
+<td><img src="savings_plan.png" alt="Savings" width="100%"/><br/><sub>Savings Plan</sub></td>
+</tr>
+</table>
+
+---
+
 ## Customization
-| File / Location                | What you can customise                               | How to do it                                                             |
-|--------------------------------|------------------------------------------------------|--------------------------------------------------------------------------|
-| `frontend/app.py`              | **Global theme** – fonts, colours, button look       | Edit the `<style>` block (CSS) near the top of the file                  |
-| `frontend/app.py`              | **Tab names / order**                                | Adjust the `st.tabs([...])` list and corresponding `with tab:` sections  |
-| `frontend/savings_plan.py`     | **Sentence wording** for the savings advice          | Edit the `st.write(...)` line that builds the final message              |
-| `backend/server.py`            | **Mandatory-expense filter** (rent, utilities, …)    | Update the `mandatory = {...}` set inside `savings_plan()`               |
-| `backend/server.py`            | **Logic** for per-period calculation                 | Tweak the math in `savings_plan()`                                       |
-| `backend/db_helper.py`         | **Database credentials & table names**               | Change the connection params at the top; alter SQL queries if needed     |
-| environment variables / `.env` | **API_URL**, host, ports for deployment              | Export new values or edit your `.env` before starting Uvicorn/Streamlit  |
+
+| What | Where | How |
+|------|-------|-----|
+| Mandatory expense categories | `backend/server.py` | Edit the `mandatory = {...}` set |
+| Lakshmi Score algorithm | `frontend/artha_insights.py` | Modify `compute_lakshmi_score()` |
+| Sanskrit quotes | `frontend/artha_insights.py` | Add to `ARTHA_WISDOM` list |
+| Database credentials | `backend/db_helper.py` | Update connection parameters |
+| UI theme | `frontend/app.py` | Edit the CSS style block |
+
+---
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+---
+
+<p align="center">
+  <sub>Built with Python, powered by ancient wisdom.</sub>
+</p>
